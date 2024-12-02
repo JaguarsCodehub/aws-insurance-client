@@ -40,10 +40,7 @@ export default function AnalysisDashboard() {
   const viewAnalysisDetails = async (analysisId: string) => {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/analysis/analysis/${analysisId}`,
-        {
-          credentials: 'include',
-        }
+        `${API_BASE_URL}/analysis/analysis/${analysisId}`
       );
       const data = await response.json();
       setSelectedAnalysis(data);

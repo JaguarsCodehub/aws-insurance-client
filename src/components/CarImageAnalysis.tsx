@@ -60,7 +60,6 @@ export default function CarImageAnalysis() {
       const response = await fetch(`${API_BASE_URL}/analysis/analyze-car`, {
         method: 'POST',
         body: formData,
-        credentials: 'include',
       });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();

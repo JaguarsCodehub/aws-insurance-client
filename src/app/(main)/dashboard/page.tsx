@@ -25,9 +25,7 @@ export default function Dashboard() {
 
   const fetchQuotes = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/quotes/user`, {
-        credentials: 'include',
-      });
+      const response = await fetch(`${API_BASE_URL}/quotes/user`);
       const data = await response.json();
       setQuotes(data);
     } catch (err) {
