@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowUpIcon, DocumentTextIcon, PlusCircleIcon, CloudArrowUpIcon } from '@heroicons/react/24/solid';
+import { API_BASE_URL } from '@/lib/config';
 
 interface Quote {
   quote_id: string;
@@ -24,7 +25,7 @@ export default function Dashboard() {
 
   const fetchQuotes = async () => {
     try {
-      const response = await fetch('http://3.95.11.219/quotes/user');
+      const response = await fetch(`${API_BASE_URL}/quotes/user`);
       const data = await response.json();
       setQuotes(data);
     } catch (err) {
