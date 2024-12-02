@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowPathIcon, ChevronRightIcon, ExclamationTriangleIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
-import CarImageAnalysis from './CarImageAnalysis';
 import { API_BASE_URL } from '@/lib/config';
 
 interface Analysis {

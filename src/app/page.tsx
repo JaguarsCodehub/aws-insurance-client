@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import Hero from '../../assets/images/hero.png'
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src={require('../../assets/images/hero.png')}
+            src={Hero}
             alt="Luxury Car Background"
             fill
             style={{ objectFit: 'cover' }}
