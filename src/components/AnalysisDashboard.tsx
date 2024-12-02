@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowPathIcon, ChevronRightIcon, ExclamationTriangleIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import CarImageAnalysis from './CarImageAnalysis';
+import { API_BASE_URL } from '@/lib/config';
 
 interface Analysis {
   analysis_id: string;
@@ -25,7 +26,7 @@ export default function AnalysisDashboard() {
   const fetchAnalyses = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8000/analysis/analyses');
+      const response = await fetch(`${API_BASE_URL}/analysis/analyses`);
       const data = await response.json();
       setAnalyses(data);
     } catch (error) {
@@ -38,7 +39,7 @@ export default function AnalysisDashboard() {
   const viewAnalysisDetails = async (analysisId: string) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/analysis/analysis/${analysisId}`
+        `${API_BASE_URL}/analysis/analysis/${analysisId}`
       );
       const data = await response.json();
       setSelectedAnalysis(data);

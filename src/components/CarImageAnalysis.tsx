@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card';
 import { CloudArrowUpIcon, DocumentMagnifyingGlassIcon, ExclamationTriangleIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import { API_BASE_URL } from '@/lib/config';
 
 interface AnalysisResponse {
   image_url: string;
@@ -56,7 +57,7 @@ export default function CarImageAnalysis() {
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
-      const response = await fetch('http://localhost:8000/analysis/analyze-car', {
+      const response = await fetch(`${API_BASE_URL}/analysis/analyze-car`, {
         method: 'POST',
         body: formData,
       });

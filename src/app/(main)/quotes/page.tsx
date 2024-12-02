@@ -1,5 +1,6 @@
 'use client';
 
+import { API_BASE_URL } from '@/lib/config';
 import { useState } from 'react';
 
 export default function QuoteForm() {
@@ -19,7 +20,7 @@ export default function QuoteForm() {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:8000/quotes', {
+      const response = await fetch(`${API_BASE_URL}/quotes`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ export default function Dashboard() {
 
   const fetchQuotes = async () => {
     try {
-      const response = await fetch('http://localhost:8000/quotes/user');
+      const response = await fetch('http://3.95.11.219/quotes/user');
       const data = await response.json();
       setQuotes(data);
     } catch (err) {
