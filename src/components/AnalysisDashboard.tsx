@@ -25,7 +25,9 @@ export default function AnalysisDashboard() {
   const fetchAnalyses = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/analysis/analyses`);
+      const response = await fetch(`${API_BASE_URL}/analysis/analyses`, {
+        credentials: 'include',
+      });
       const data = await response.json();
       setAnalyses(data);
     } catch (error) {
@@ -38,7 +40,10 @@ export default function AnalysisDashboard() {
   const viewAnalysisDetails = async (analysisId: string) => {
     try {
       const response = await fetch(
-        `${API_BASE_URL}/analysis/analysis/${analysisId}`
+        `${API_BASE_URL}/analysis/analysis/${analysisId}`,
+        {
+          credentials: 'include',
+        }
       );
       const data = await response.json();
       setSelectedAnalysis(data);
