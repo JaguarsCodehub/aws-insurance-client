@@ -161,11 +161,7 @@ export default function Dashboard() {
             </div>
           )}
 
-          {quotes.length === 0 && !loading ? (
-            <div className="p-6">
-              <p className="text-gray-600 font-serif">No quotes found. Get your first quote now!</p>
-            </div>
-          ) : (
+          {!loading && !error && (
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gradient-to-r from-gray-50 to-white">
@@ -178,30 +174,44 @@ export default function Dashboard() {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {quotes.map((quote) => (
-                    <tr key={quote.quote_id} className="hover:bg-green-50/50 transition-colors duration-200">
-                      <td className="px-6 py-4 whitespace-nowrap font-serif">
-                        {quote.car_make} {quote.car_model}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap font-serif">
-                        {quote.year}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap font-serif">
-                        {quote.registration_number}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap font-serif font-semibold text-green-600">
-                        £{quote.premium}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <button
-                          className="px-4 py-2 text-green-600 hover:text-green-700 font-serif transition-colors duration-200 hover:bg-green-50 rounded-lg"
-                          onClick={() => window.print()}
+                  {quotes?.length > 0 ? (
+                    quotes.map((quote) => (
+                      <tr key={quote.quote_id} className="hover:bg-green-50/50 transition-colors duration-200">
+                        <td className="px-6 py-4 whitespace-nowrap font-serif">
+                          {quote.car_make} {quote.car_model}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap font-serif">
+                          {quote.year}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap font-serif">
+                          {quote.registration_number}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap font-serif font-semibold text-green-600">
+                          £{quote.premium}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <button
+                            className="px-4 py-2 text-green-600 hover:text-green-700 font-serif transition-colors duration-200 hover:bg-green-50 rounded-lg"
+                            onClick={() => window.print()}
+                          >
+                            Print Quote
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan={5} className="px-6 py-8 text-center text-gray-500 font-serif">
+                        <p className="mb-2">No quotes available yet.</p>
+                        <Link 
+                          href="/quotes" 
+                          className="inline-block px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200"
                         >
-                          Print Quote
-                        </button>
+                          Get Your First Quote
+                        </Link>
                       </td>
                     </tr>
-                  ))}
+                  )}
                 </tbody>
               </table>
             </div>
